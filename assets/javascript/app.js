@@ -60,7 +60,7 @@ $(document).ready(function() {
     var questionCounter = 0;
     var questionsCorrect = 0;
     var questionsIncorrect = 0;
-    var timeRemaining = 30;
+    var timeRemaining = 31;
     
 
 
@@ -77,9 +77,19 @@ $(document).ready(function() {
             questionCounter++
         };
 
-        timeRemaining = setInterval(timer, 3000);
-        $("#timer").html(timeRemaining);
-        timer--;
+        function decreaseTimer(){
+            timeRemaining--;
+        console.log(timeRemaining);
+
+        if(timeRemaining===0) {
+            clearInterval(intervalID);
+        
+        };
+
+        $("#timer").html("<h2>" +"Time Remaining: " + timeRemaining + "</h2>");
+        };
+        
+        var intervalID = setInterval(decreaseTimer, 1000);
 
 
          //user selects correct answer, add to points and let them know it was correct
