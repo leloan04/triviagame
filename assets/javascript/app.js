@@ -65,12 +65,13 @@ $(document).ready(function() {
 
 
 //Display questions and answer options
+    function showQuestion() {
+        $("#currentQuestion").html("<h2>" + triviaGame[questionCounter].question + " </h2>");
+    };
 
     $("#startButton").on("click", function() {
        
-        function showQuestion() {
-            $("#currentQuestion").html("<h2>" + triviaGame.question[questionCounter] + " </h2>");
-          };
+        showQuestion();
           
         function nextQuestion(){
             questionCounter++
@@ -78,6 +79,11 @@ $(document).ready(function() {
 
         timeRemaining = setInterval(timer, 3000);
         $("#timer").html(timeRemaining);
+        timer--;
+
+
+         //user selects correct answer, add to points and let them know it was correct
+
     });
 
        
